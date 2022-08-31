@@ -1,0 +1,17 @@
+<div style="margin: 40px; text-align: center;">
+    <div> <%= image_tag current_user.profile_pic.url(:medium) %> </div>
+
+    <h1><%= current_user.first_name %>&nbsp;<%= current_user.last_name %></h1>
+    <p><%= current_user.email %></p>
+
+    <h4 style="display: inline;">Points:&nbsp;</h4><%= current_user.points.to_i %>
+
+    <h4>Badges:</h4>
+    <div>
+    <% current_user.badges.each do |badge| %>
+      <div><%= image_tag(badge.image_url(:small))  %></div>
+    <% end %>
+    </div>
+    <div style="margin: 40px;"></div>
+    <%= link_to "Update your profile", edit_user_registration_path(current_user), class: "btn btn-primary" %>
+</div>
